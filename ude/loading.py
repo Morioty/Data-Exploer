@@ -10,7 +10,11 @@ import numpy as np
 import pandas as pd
 
 KINDS = ["numeric", "categorical", "boolean", "datetime", "text", "identifier"]
-SUPPORTED = ("csv", "tsv", "txt", "xlsx", "xls", "json", "parquet", "html", "htm", "md", "markdown")
+SUPPORTED = ("csv", "tsv", "txt", "xlsx", "xls", "ods", "json", "jsonl", "ndjson", "parquet", "feather", "xml",
+             "html", "htm", "md", "markdown", "dta", "db", "sqlite", "sqlite3")
+EXCEL_LIKE = ("xlsx", "xls", "ods")
+TABLE_PICK = ("html", "htm", "md", "markdown", "db", "sqlite", "sqlite3")
+FALLBACK_ENCODINGS = ("utf-8-sig", "cp949", "latin-1")  # cp949 covers Korean CSVs from Excel
 MAX_BYTES = 200 * 1024 * 1024
 TRUE = {"true", "t", "yes", "y", "1"}
 FALSE = {"false", "f", "no", "n", "0"}
@@ -23,23 +27,85 @@ class LoadError(Exception):
     """Raised with a user-readable message."""
 
 
-def excel_sheets(data: bytes) -> list[str]:
+def ext_of(name: str) -> str:
+    return name.rsplit(".", 1)[-1].lower() if "." in name else ""
+
+
+def excel_sheets(data: bytes, ext: str = "xlsx") -> list[str]:
     try:
-        return pd.ExcelFile(io.BytesIO(data)).sheet_names
+        return pd.ExcelFile(io.BytesIO(data), engine="odf" if ext == "ods" else None).sheet_names
     except ImportError:
-        raise LoadError("Reading Excel files needs the 'openpyxl' package (pip install openpyxl).")
+        raise LoadError("Reading this spreadsheet needs an extra package: 'openpyxl' for Excel, 'odfpy' for .ods (pip install it).")
     except Exception as e:
-        raise LoadError(f"Could not read the Excel file: {e}")
+        raise LoadError(f"Could not read the spreadsheet: {e}")
+
+
+def unwrap_gz(name: str, data: bytes) -> tuple[str, bytes]:
+    """Transparently decompress .gz (size-capped against decompression bombs)."""
+    import gzip
+    try:
+        out = gzip.GzipFile(fileobj=io.BytesIO(data)).read(MAX_BYTES + 1)
+    except Exception as e:
+        raise LoadError(f"Could not decompress the .gz file: {e}")
+    if len(out) > MAX_BYTES:
+        raise LoadError(f"The decompressed file is larger than {MAX_BYTES // 2**20} MB.")
+    return name[:-3], out
+
+
+def zip_members(data: bytes) -> list[str]:
+    import zipfile
+    try:
+        zf = zipfile.ZipFile(io.BytesIO(data))
+    except Exception as e:
+        raise LoadError(f"Could not open the .zip file: {e}")
+    ok = [i.filename for i in zf.infolist() if not i.is_dir() and "__MACOSX" not in i.filename
+          and ext_of(i.filename) in SUPPORTED + ("gz",) and i.file_size <= MAX_BYTES]
+    if not ok:
+        raise LoadError("The .zip contains no readable data files (CSV, Excel, JSON, Parquet, …).")
+    return ok
+
+
+def zip_read(data: bytes, member: str) -> bytes:
+    import zipfile
+    with zipfile.ZipFile(io.BytesIO(data)) as zf:
+        out = zf.open(member).read(MAX_BYTES + 1)  # read is capped, not trusted from the header
+    if len(out) > MAX_BYTES:
+        raise LoadError(f"'{member}' is larger than {MAX_BYTES // 2**20} MB once extracted.")
+    return out
+
+
+def _text(data: bytes, encoding: str) -> str:
+    """Decode with the chosen encoding, then fall back (BOM-aware, then CP949, then Latin-1)."""
+    tries = [encoding]
+    if data[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        tries.append("utf-16")
+    tries += [e for e in FALLBACK_ENCODINGS if e != encoding]
+    for enc in tries:
+        try:
+            return data.decode(enc)
+        except UnicodeDecodeError:
+            continue
+    raise UnicodeDecodeError(encoding, data, 0, 1, "no encoding worked")
 
 
 def load_file(name: str, data: bytes, encoding: str = "utf-8", sheet: str | None = None) -> pd.DataFrame:
-    ext = name.rsplit(".", 1)[-1].lower() if "." in name else ""
-    if ext not in SUPPORTED:
-        raise LoadError(f"Unsupported file type '.{ext}'. Use CSV, TSV, Excel, JSON, Parquet, HTML or Markdown tables.")
+    ext = ext_of(name)
+    if ext == "gz":
+        name, data = unwrap_gz(name, data)
+        ext = ext_of(name)
+    if ext == "zip":
+        raise LoadError("Choose a file inside the .zip first.")
     if not data:
         raise LoadError("The file is empty.")
     if len(data) > MAX_BYTES:
         raise LoadError(f"The file is larger than {MAX_BYTES // 2**20} MB.")
+    if data[:4] == b"%PDF" or ext in ("pdf", "png", "jpg", "jpeg", "gif", "docx", "pptx"):
+        raise LoadError("This is a document or image, not a data table. Export the table to CSV/Excel first.")
+    if ext not in SUPPORTED:
+        if b"\x00" in data[:4096] and data[:2] not in (b"\xff\xfe", b"\xfe\xff"):
+            raise LoadError(f"Unrecognised binary file type '.{ext}'. Supported: CSV, TSV, Excel, ODS, JSON/JSONL, Parquet, "
+                            "Feather, XML, HTML/Markdown tables, SQLite, Stata, and .gz/.zip of these.")
+        ext = "txt"  # unknown extension but text: sniff the delimiter
     try:
         df = _read(ext, data, encoding, sheet)
     except LoadError:
@@ -61,28 +127,59 @@ def load_file(name: str, data: bytes, encoding: str = "utf-8", sheet: str | None
 def _read(ext, data, encoding, sheet):
     buf = io.BytesIO(data)
     if ext in ("csv", "tsv", "txt"):
+        text = _text(data, encoding)
         sniff = ext == "txt"
         sep = None if sniff else ("\t" if ext == "tsv" else ",")
-        df = pd.read_csv(buf, dtype=str, encoding=encoding, sep=sep, engine="python" if sniff else "c")
+        df = pd.read_csv(io.StringIO(text), dtype=str, sep=sep, engine="python" if sniff else "c")
         if df.shape[1] == 1 and re.search(r"[;\t|]", str(df.columns[0])):  # wrong delimiter guess
-            df = pd.read_csv(io.BytesIO(data), dtype=str, encoding=encoding, sep=None, engine="python")
+            df = pd.read_csv(io.StringIO(text), dtype=str, sep=None, engine="python")
+        if ext == "txt" and df.shape[1] == 1:
+            raise LoadError("Could not find a delimiter (comma, tab, semicolon, pipe); this does not look like a table.")
         return df
-    if ext in ("xlsx", "xls"):
-        return pd.read_excel(buf, sheet_name=sheet or 0)
+    if ext in EXCEL_LIKE:
+        return pd.read_excel(buf, sheet_name=sheet or 0, engine="odf" if ext == "ods" else None)
     if ext in ("html", "htm", "md", "markdown"):
-        ts = _tables(ext, data.decode(encoding))
+        ts = _tables(ext, _text(data, encoding))
         if not ts:
             raise LoadError("No table with a header and at least one data row was found in this file.")
         if sheet:
             return ts[int(re.match(r"Table (\d+)", sheet).group(1)) - 1]
         return max(ts, key=len)
-    if ext == "json":
-        obj = json.loads(data.decode(encoding))
+    if ext in ("db", "sqlite", "sqlite3"):
+        con = _sqlite(data)
+        names = _sqlite_tables(con)
+        t = sheet or (names[0] if names else None)
+        if t not in names:
+            raise LoadError("The database has no tables." if not names else f"Table '{t}' not found.")
+        return pd.read_sql_query('SELECT * FROM "' + t.replace('"', '""') + '"', con)
+    if ext in ("json", "jsonl", "ndjson"):
+        text = _text(data, encoding)
+        try:
+            obj = json.loads(text)
+        except ValueError:  # JSON Lines: one object per line
+            obj = [json.loads(l) for l in text.splitlines() if l.strip()]
         if isinstance(obj, dict):
             lists = [v for v in obj.values() if isinstance(v, list)]
             obj = lists[0] if len(lists) == 1 else [obj]
         return _flatten(pd.json_normalize(obj))
+    if ext == "xml":  # etree parser: no network access, no external entities
+        return pd.read_xml(io.StringIO(_text(data, encoding)), parser="etree", dtype=str)
+    if ext == "feather":
+        return _flatten(pd.read_feather(buf))
+    if ext == "dta":
+        return pd.read_stata(buf)
     return _flatten(pd.read_parquet(buf))
+
+
+def _sqlite(data):
+    import sqlite3
+    con = sqlite3.connect(":memory:")
+    con.deserialize(data)
+    return con
+
+
+def _sqlite_tables(con) -> list[str]:
+    return [r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type IN ('table','view') AND name NOT LIKE 'sqlite_%' ORDER BY name")]
 
 
 def _rows_to_df(rows):
@@ -119,9 +216,11 @@ def _tables(ext, text) -> list[pd.DataFrame]:
 
 def table_names(name: str, data: bytes, encoding: str = "utf-8") -> list[str]:
     """Labels for the tables in an HTML/Markdown file, largest first."""
-    ext = name.rsplit(".", 1)[-1].lower()
+    ext = ext_of(name)
     try:
-        ts = _tables(ext, data.decode(encoding))
+        if ext in ("db", "sqlite", "sqlite3"):
+            return _sqlite_tables(_sqlite(data))
+        ts = _tables(ext, _text(data, encoding))
     except UnicodeDecodeError:
         raise LoadError(f"Could not decode the file as '{encoding}'.")
     except ImportError as e:

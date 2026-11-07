@@ -43,7 +43,7 @@ def test_other_samples_types():
     assert k["segment"] == "categorical" and k["order_value"] == "numeric"
 
 
-@pytest.mark.parametrize("name,data", [("a.exe", b"x"), ("a.csv", b""), ("a.csv", b"a,b\n"), ("a.json", b"{bad"), ("a.csv", b"\xff\xfe\x00bad,\xc3\x28\n1,2")])
+@pytest.mark.parametrize("name,data", [("a.exe", b"x"), ("a.csv", b""), ("a.csv", b"a,b\n"), ("a.json", b"{bad")])
 def test_bad_files_give_load_error(name, data):
     with pytest.raises(LoadError):
         load_file(name, data)

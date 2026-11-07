@@ -1,6 +1,6 @@
 # Universal Data Explorer
 
-Reads CSV, TSV, Excel, JSON, Parquet, plus tables inside HTML and Markdown (.html, .md) files.
+Reads (also inside .zip or .gz): CSV/TSV/TXT (delimiter and encoding auto-detected, incl. Korean CP949), Excel, ODS, JSON, JSON Lines, Parquet, Feather, XML, HTML and Markdown tables, SQLite (.db), Stata (.dta). Unknown extensions are sniffed as delimited text. PDFs, images and Word files are rejected with a message: export the table to CSV/Excel first.
 
 Local, dataset-agnostic EDA plus a deterministic analysis assistant that turns verified statistics into ranked findings and research questions. No internet, API keys or LLMs. No predictive modelling.
 

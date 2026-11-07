@@ -9,7 +9,8 @@ from ude import insights as I
 from ude import quality as Q
 from ude import report as R
 from ude import stats as S
-from ude.loading import KINDS, LoadError, apply_types, excel_sheets, infer_types, load_file, table_names
+from ude.loading import (EXCEL_LIKE, KINDS, TABLE_PICK, LoadError, apply_types, excel_sheets, ext_of, infer_types, load_file,
+                         table_names, unwrap_gz, zip_members, zip_read)
 from ude.samples import EXAMPLES
 from ude.viz import make_fig
 
@@ -54,10 +55,11 @@ def plot(fig, note=""):
 # ------------------------------------------------------------------ sidebar: data source
 with st.sidebar:
     st.title("Universal Data Explorer")
-    up = st.file_uploader("Upload data", type=["csv", "tsv", "txt", "xlsx", "xls", "json", "parquet", "html", "htm", "md", "markdown"],
-                          help="Files are processed locally and never sent anywhere.")
+    up = st.file_uploader("Upload data (any file)", help="CSV/TSV/TXT, Excel, ODS, JSON/JSONL, Parquet, Feather, XML, HTML/Markdown tables, "
+                          "SQLite, Stata, and .gz/.zip of these. Processed locally; never sent anywhere.")
     ex = st.selectbox("…or try an example", ["(none)"] + list(EXAMPLES))
-    enc = st.selectbox("CSV/JSON encoding", ["utf-8", "utf-8-sig", "latin-1", "cp1252", "utf-16"])
+    enc = st.selectbox("Text encoding", ["utf-8", "utf-8-sig", "cp949", "euc-kr", "latin-1", "cp1252", "utf-16"],
+                       help="If decoding fails, UTF-8-BOM, CP949 (Korean) and Latin-1 are tried automatically.")
 
 if up is not None:
     name, data = up.name, up.getvalue()
@@ -65,21 +67,30 @@ elif ex != "(none)":
     name, data = f"{ex}.csv", EXAMPLES[ex]().to_csv(index=False).encode()
 else:
     st.header("Upload a dataset to begin")
-    st.write("Supports CSV, Excel, JSON and Parquet. You will get a structure overview, data-quality checks, "
-             "interactive charts, and automatically generated, evidence-backed research questions.")
+    st.write("Drop in whatever you were given: CSV, Excel, JSON, Parquet, SQLite, XML, HTML/Markdown tables, zipped or gzipped files… "
+             "You get a structure overview, data-quality checks, interactive charts, and evidence-backed research questions.")
     st.stop()
 
 sheet = None
-if name.lower().endswith((".xlsx", ".xls", ".html", ".htm", ".md", ".markdown")):
-    try:
-        sheets = excel_sheets(data) if name.lower().endswith((".xlsx", ".xls")) else table_names(name, data, enc)
+try:
+    if ext_of(name) == "gz":
+        name, data = unwrap_gz(name, data)
+    if ext_of(name) == "zip":
+        with st.sidebar:
+            member = st.selectbox("File inside the zip", zip_members(data))
+        name, data = member.rsplit("/", 1)[-1], zip_read(data, member)
+        if ext_of(name) == "gz":
+            name, data = unwrap_gz(name, data)
+    ext = ext_of(name)
+    if ext in EXCEL_LIKE or ext in TABLE_PICK:
+        sheets = excel_sheets(data, ext) if ext in EXCEL_LIKE else table_names(name, data, enc)
         if not sheets:
             raise LoadError("No table with a header and at least one data row was found in this file.")
-    except LoadError as e:
-        st.error(str(e))
-        st.stop()
-    with st.sidebar:
-        sheet = st.selectbox("Excel sheet" if name.lower().endswith((".xlsx", ".xls")) else "Table", sheets)
+        with st.sidebar:
+            sheet = st.selectbox("Sheet" if ext in EXCEL_LIKE else "Table", sheets)
+except LoadError as e:
+    st.error(str(e))
+    st.stop()
 
 key = f"{name}|{len(data)}|{enc}|{sheet}"
 if ss.get("key") != key:

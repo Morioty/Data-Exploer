@@ -5,5 +5,6 @@ scipy>=1.11
 plotly>=5.20
 openpyxl>=3.1
 lxml>=5
+odfpy>=1.4
 pyarrow>=15
 pytest>=8
