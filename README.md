@@ -41,3 +41,8 @@ All pair tests run (Spearman, Kruskal-Wallis, chi-square, Spearman-with-time), a
 - Cleaning replays from the original on each change, which is simple but slower on very large tables.
 - Exports do not neutralise spreadsheet formulas (cells starting with `=`); treat exported files from untrusted sources with care in Excel.
 - Static PNG chart export is not included (needs `kaleido`); charts export as interactive HTML.
+
+## Run locally (private) vs. publish on the web
+
+- Private: double-click `run_local.bat` (binds to localhost only). Plain `streamlit run app.py` may be reachable from other machines on your network.
+- Public: push this repo to GitHub, then at https://share.streamlit.io choose **New app**, pick the repo, branch `main`, main file `app.py`. Anything uploaded there is processed on Streamlit's servers, and anyone with the URL can use the app, so never upload private or sensitive data to a public deployment. Free tier memory is limited (about 1 GB), so very large files may fail.
