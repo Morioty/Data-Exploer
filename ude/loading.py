@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 KINDS = ["numeric", "categorical", "boolean", "datetime", "text", "identifier"]
-SUPPORTED = ("csv", "tsv", "txt", "xlsx", "xls", "json", "parquet")
+SUPPORTED = ("csv", "tsv", "txt", "xlsx", "xls", "json", "parquet", "html", "htm", "md", "markdown")
 MAX_BYTES = 200 * 1024 * 1024
 TRUE = {"true", "t", "yes", "y", "1"}
 FALSE = {"false", "f", "no", "n", "0"}
@@ -35,7 +35,7 @@ def excel_sheets(data: bytes) -> list[str]:
 def load_file(name: str, data: bytes, encoding: str = "utf-8", sheet: str | None = None) -> pd.DataFrame:
     ext = name.rsplit(".", 1)[-1].lower() if "." in name else ""
     if ext not in SUPPORTED:
-        raise LoadError(f"Unsupported file type '.{ext}'. Use CSV, TSV, Excel, JSON or Parquet.")
+        raise LoadError(f"Unsupported file type '.{ext}'. Use CSV, TSV, Excel, JSON, Parquet, HTML or Markdown tables.")
     if not data:
         raise LoadError("The file is empty.")
     if len(data) > MAX_BYTES:
@@ -69,6 +69,13 @@ def _read(ext, data, encoding, sheet):
         return df
     if ext in ("xlsx", "xls"):
         return pd.read_excel(buf, sheet_name=sheet or 0)
+    if ext in ("html", "htm", "md", "markdown"):
+        ts = _tables(ext, data.decode(encoding))
+        if not ts:
+            raise LoadError("No table with a header and at least one data row was found in this file.")
+        if sheet:
+            return ts[int(re.match(r"Table (\d+)", sheet).group(1)) - 1]
+        return max(ts, key=len)
     if ext == "json":
         obj = json.loads(data.decode(encoding))
         if isinstance(obj, dict):
@@ -76,6 +83,53 @@ def _read(ext, data, encoding, sheet):
             obj = lists[0] if len(lists) == 1 else [obj]
         return _flatten(pd.json_normalize(obj))
     return _flatten(pd.read_parquet(buf))
+
+
+def _rows_to_df(rows):
+    rows = [r for r in rows if any(c for c in r)]
+    if len(rows) < 2:
+        return None
+    w = max(len(r) for r in rows)
+    rows = [r + [""] * (w - len(r)) for r in rows]
+    df = pd.DataFrame(rows[1:], columns=[h or f"column_{i + 1}" for i, h in enumerate(rows[0])], dtype=str)
+    return df.replace("", np.nan)  # all text, so leading zeros and ids survive
+
+
+def _tables(ext, text) -> list[pd.DataFrame]:
+    out = []
+    if ext in ("html", "htm"):
+        from lxml import html as lh  # parses only; never fetches anything
+        for t in lh.fromstring(text).iter("table"):
+            rows = [[" ".join(c.text_content().split()) for c in tr if c.tag in ("td", "th")] for tr in t.iter("tr")]
+            if (d := _rows_to_df(rows)) is not None:
+                out.append(d)
+        return out
+    block = []
+    for line in text.splitlines() + [""]:
+        if "|" in line:
+            block.append(line.strip())
+            continue
+        if len(block) >= 3 and re.fullmatch(r"\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?", block[1]):
+            cells = lambda l: [c.strip().replace("\\|", "|") for c in re.split(r"(?<!\\)\|", l.strip("|"))]
+            if (d := _rows_to_df([cells(block[0])] + [cells(l) for l in block[2:]])) is not None:
+                out.append(d)
+        block = []
+    return out
+
+
+def table_names(name: str, data: bytes, encoding: str = "utf-8") -> list[str]:
+    """Labels for the tables in an HTML/Markdown file, largest first."""
+    ext = name.rsplit(".", 1)[-1].lower()
+    try:
+        ts = _tables(ext, data.decode(encoding))
+    except UnicodeDecodeError:
+        raise LoadError(f"Could not decode the file as '{encoding}'.")
+    except ImportError as e:
+        raise LoadError(f"A package needed for HTML files is missing: {e}")
+    except Exception as e:
+        raise LoadError(f"Could not read tables: {e}")
+    order = sorted(range(len(ts)), key=lambda i: -len(ts[i]))
+    return [f"Table {i + 1} ({len(ts[i])} rows × {ts[i].shape[1]} cols)" for i in order]
 
 
 def _flatten(df):

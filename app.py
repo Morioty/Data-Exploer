@@ -9,7 +9,7 @@ from ude import insights as I
 from ude import quality as Q
 from ude import report as R
 from ude import stats as S
-from ude.loading import KINDS, LoadError, apply_types, excel_sheets, infer_types, load_file
+from ude.loading import KINDS, LoadError, apply_types, excel_sheets, infer_types, load_file, table_names
 from ude.samples import EXAMPLES
 from ude.viz import make_fig
 
@@ -54,7 +54,7 @@ def plot(fig, note=""):
 # ------------------------------------------------------------------ sidebar: data source
 with st.sidebar:
     st.title("Universal Data Explorer")
-    up = st.file_uploader("Upload data", type=["csv", "tsv", "txt", "xlsx", "xls", "json", "parquet"],
+    up = st.file_uploader("Upload data", type=["csv", "tsv", "txt", "xlsx", "xls", "json", "parquet", "html", "htm", "md", "markdown"],
                           help="Files are processed locally and never sent anywhere.")
     ex = st.selectbox("…or try an example", ["(none)"] + list(EXAMPLES))
     enc = st.selectbox("CSV/JSON encoding", ["utf-8", "utf-8-sig", "latin-1", "cp1252", "utf-16"])
@@ -70,14 +70,16 @@ else:
     st.stop()
 
 sheet = None
-if name.lower().endswith((".xlsx", ".xls")):
+if name.lower().endswith((".xlsx", ".xls", ".html", ".htm", ".md", ".markdown")):
     try:
-        sheets = excel_sheets(data)
+        sheets = excel_sheets(data) if name.lower().endswith((".xlsx", ".xls")) else table_names(name, data, enc)
+        if not sheets:
+            raise LoadError("No table with a header and at least one data row was found in this file.")
     except LoadError as e:
         st.error(str(e))
         st.stop()
     with st.sidebar:
-        sheet = st.selectbox("Excel sheet", sheets)
+        sheet = st.selectbox("Excel sheet" if name.lower().endswith((".xlsx", ".xls")) else "Table", sheets)
 
 key = f"{name}|{len(data)}|{enc}|{sheet}"
 if ss.get("key") != key:
