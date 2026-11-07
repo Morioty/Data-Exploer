@@ -1,5 +1,7 @@
 # Universal Data Explorer
 
+Reads CSV, TSV, Excel, JSON, Parquet, plus tables inside HTML and Markdown (.html, .md) files.
+
 Local, dataset-agnostic EDA plus a deterministic analysis assistant that turns verified statistics into ranked findings and research questions. No internet, API keys or LLMs. No predictive modelling.
 
 ## Install and run (Python 3.11+)
