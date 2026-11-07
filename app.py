@@ -55,11 +55,14 @@ def plot(fig, note=""):
 # ------------------------------------------------------------------ sidebar: data source
 with st.sidebar:
     st.title("Universal Data Explorer")
-    up = st.file_uploader("Upload data (any file)", help="CSV/TSV/TXT, Excel, ODS, JSON/JSONL, Parquet, Feather, XML, HTML/Markdown tables, "
-                          "SQLite, Stata, and .gz/.zip of these. Processed locally; never sent anywhere.")
     ex = st.selectbox("…or try an example", ["(none)"] + list(EXAMPLES))
     enc = st.selectbox("Text encoding", ["utf-8", "utf-8-sig", "cp949", "euc-kr", "latin-1", "cp1252", "utf-16"],
                        help="If decoding fails, UTF-8-BOM, CP949 (Korean) and Latin-1 are tried automatically.")
+
+# Uploader lives on the main page (the sidebar is collapsed on small screens). Open until a file is loaded.
+with st.expander("📂 Upload a data file (drag & drop or browse)", expanded="key" not in ss):
+    up = st.file_uploader("Any file: CSV, Excel, JSON, Parquet, SQLite, XML, HTML/Markdown tables, .zip/.gz …",
+                          help="Processed by this app only; nothing is sent to other services.")
 
 if up is not None:
     name, data = up.name, up.getvalue()
