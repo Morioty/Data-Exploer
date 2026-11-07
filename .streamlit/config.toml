@@ -1,5 +1,7 @@
 [server]
 maxUploadSize = 200
+address = "localhost"
+headless = true
 
 [browser]
 gatherUsageStats = false
