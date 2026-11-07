@@ -1,0 +1,311 @@
+zip,amount,score,color,when,country,empty,note
+01234,86.96,77,red ,2023-01-05,US,,free text note number 0 about thing 0
+00501,96.51,31,blue,2023-03-15 10:30,US,,free text note number 1 about thing 1
+02108,133.27,?,red ,05/02/2023,US,,free text note number 2 about thing 2
+07001,113.18,?,RED,2023-01-05,US,,free text note number 3 about thing 3
+00100,67.17,0,RED,05/02/2023,US,,free text note number 4 about thing 4
+24800,99.9,7,Blue,2023-03-15 10:30,US,,free text note number 5 about thing 5
+29966,87.53,?,red ,2023-01-05,US,,free text note number 6 about thing 6
+16532,102.97,24,Blue,2023-01-05,US,,free text note number 7 about thing 0
+25533,67.84,14,Red,2023-03-15 10:30,US,,free text note number 8 about thing 1
+01460,104.84,86,Blue,05/02/2023,US,,free text note number 9 about thing 2
+48152,104.71,50,Blue,05/02/2023,US,,free text note number 10 about thing 3
+85528,131.51,72,RED,05/02/2023,US,,free text note number 11 about thing 4
+49507,106.33,85,Blue,2023/04/20,US,,free text note number 12 about thing 5
+97258,110.21,54,Red,2023-01-05,US,,free text note number 13 about thing 6
+48213,70.14,35,red ,05/02/2023,US,,free text note number 14 about thing 0
+68884,145.05,?,Green,2023-03-15 10:30,US,,free text note number 15 about thing 1
+56441,61.69,71,Red,2023-03-15 10:30,US,,free text note number 16 about thing 2
+30504,122.04,84,Blue,2023-03-15 10:30,US,,free text note number 17 about thing 3
+87353,93.4,28,Red,2023/04/20,US,,free text note number 18 about thing 4
+40091,unknown,?,Red,05/02/2023,US,,free text note number 19 about thing 5
+66926,86.87,59,Red,2023-03-15 10:30,US,,free text note number 20 about thing 6
+81155,unknown,70,red ,2023-01-05,US,,free text note number 21 about thing 0
+97870,107.6,73,blue,05/02/2023,US,,free text note number 22 about thing 1
+47733,97.8,80,Green,2023-03-15 10:30,US,,free text note number 23 about thing 2
+83371,129.65,54,Blue,2023-03-15 10:30,US,,free text note number 24 about thing 3
+39152,63.41,?,Green,2023-03-15 10:30,US,,free text note number 25 about thing 4
+49486,99.94,32,red ,2023-01-05,US,,free text note number 26 about thing 5
+77952,82.16,49,Blue,2023/04/20,US,,free text note number 27 about thing 6
+73465,115.52,?,red ,05/02/2023,US,,free text note number 28 about thing 0
+27308,57.64,?,RED,2023-03-15 10:30,US,,free text note number 29 about thing 1
+38872,93.13,13,Red,2023-03-15 10:30,US,,free text note number 30 about thing 2
+10813,104.2,40,RED,2023-01-05,US,,free text note number 31 about thing 3
+20394,70.31,?,Red,05/02/2023,US,,free text note number 32 about thing 4
+39611,119.7,52,RED,2023-01-05,US,,free text note number 33 about thing 5
+64827,103.57,78,Red,2023-01-05,US,,free text note number 34 about thing 6
+88299,120.14,28,RED,2023-01-05,US,,free text note number 35 about thing 0
+38712,119.18,50,RED,2023/04/20,US,,free text note number 36 about thing 1
+99543,80.4,27,Blue,2023-01-05,US,,free text note number 37 about thing 2
+83711,84.04,?,Green,2023/04/20,US,,free text note number 38 about thing 3
+22086,95.93,?,Red,2023/04/20,US,,free text note number 39 about thing 4
+94015,114.96,?,RED,2023/04/20,US,,free text note number 40 about thing 5
+78045,117.02,?,Green,2023-01-05,US,,free text note number 41 about thing 6
+95612,85.81,?,RED,2023-01-05,US,,free text note number 42 about thing 0
+10469,87.86,?,red ,05/02/2023,US,,free text note number 43 about thing 1
+30461,84.04,17,red ,2023/04/20,US,,free text note number 44 about thing 2
+65956,88.32,13,Red,2023-01-05,US,,free text note number 45 about thing 3
+71542,95.24,91,blue,05/02/2023,US,,free text note number 46 about thing 4
+12164,97.36,45,Blue,2023-03-15 10:30,US,,free text note number 47 about thing 5
+48148,141.16,0,red ,2023-01-05,US,,free text note number 48 about thing 6
+21701,89.87,79,RED,2023/04/20,US,,free text note number 49 about thing 0
+57133,94.23,95,Red,2023/04/20,US,,free text note number 50 about thing 1
+78145,109.17,80,blue,2023-03-15 10:30,US,,free text note number 51 about thing 2
+22592,80.94,?,Green,2023-03-15 10:30,US,,free text note number 52 about thing 3
+11182,92.63,1,red ,2023-03-15 10:30,US,,free text note number 53 about thing 4
+38111,100.27,25,Green,2023/04/20,US,,free text note number 54 about thing 5
+51636,115.48,92,Blue,2023-01-05,US,,free text note number 55 about thing 6
+48829,73.68,?,red ,2023-03-15 10:30,US,,free text note number 56 about thing 0
+34190,127.43,?,Red,2023-01-05,US,,free text note number 57 about thing 1
+74558,92.95,43,red ,2023/04/20,US,,free text note number 58 about thing 2
+99071,103.39,84,blue,2023-01-05,US,,free text note number 59 about thing 3
+34411,116.94,43,blue,2023-03-15 10:30,US,,free text note number 60 about thing 4
+76487,113.22,65,red ,05/02/2023,US,,free text note number 61 about thing 5
+85985,121.18,?,red ,2023-03-15 10:30,US,,free text note number 62 about thing 6
+28430,103.46,71,Green,2023-01-05,US,,free text note number 63 about thing 0
+00099,99.61,51,blue,05/02/2023,US,,free text note number 64 about thing 1
+98253,106.33,96,red ,2023/04/20,US,,free text note number 65 about thing 2
+96135,80.09,8,RED,2023-01-05,US,,free text note number 66 about thing 3
+63578,124.28,24,Blue,2023/04/20,US,,free text note number 67 about thing 4
+60457,84.49,24,blue,05/02/2023,US,,free text note number 68 about thing 5
+15659,74.8,27,RED,2023/04/20,US,,free text note number 69 about thing 6
+12447,141.13,14,Blue,2023/04/20,US,,free text note number 70 about thing 0
+28508,97.27,0,Green,05/02/2023,US,,free text note number 71 about thing 1
+97494,unknown,81,Green,05/02/2023,US,,free text note number 72 about thing 2
+81088,137.05,79,RED,05/02/2023,US,,free text note number 73 about thing 3
+16955,93.41,15,RED,2023/04/20,US,,free text note number 74 about thing 4
+95850,121.24,8,Blue,2023-03-15 10:30,US,,free text note number 75 about thing 5
+32471,83.41,66,Blue,2023-01-05,US,,free text note number 76 about thing 6
+03651,95.02,?,Green,2023-01-05,US,,free text note number 77 about thing 0
+53112,66.23,8,Blue,2023/04/20,US,,free text note number 78 about thing 1
+57209,61.82,?,Red,05/02/2023,US,,free text note number 79 about thing 2
+69914,80.47,?,blue,2023/04/20,US,,free text note number 80 about thing 3
+19815,98.44,98,Blue,2023-03-15 10:30,US,,free text note number 81 about thing 4
+63950,115.96,43,RED,05/02/2023,US,,free text note number 82 about thing 5
+70723,148.52,63,Green,05/02/2023,US,,free text note number 83 about thing 6
+10730,79.36,50,red ,05/02/2023,US,,free text note number 84 about thing 0
+00436,120.18,?,red ,05/02/2023,US,,free text note number 85 about thing 1
+32446,87.91,?,Red,2023/04/20,US,,free text note number 86 about thing 2
+74067,96.95,?,Red,2023-01-05,US,,free text note number 87 about thing 3
+14860,70.38,?,red ,2023/04/20,US,,free text note number 88 about thing 4
+53737,70.42,27,Blue,2023/04/20,US,,free text note number 89 about thing 5
+89955,84.43,69,Blue,2023-03-15 10:30,US,,free text note number 90 about thing 6
+63630,76.14,6,blue,05/02/2023,US,,free text note number 91 about thing 0
+80939,99.93,?,Blue,05/02/2023,US,,free text note number 92 about thing 1
+48226,85.95,71,Green,05/02/2023,US,,free text note number 93 about thing 2
+52305,125.01,73,Red,2023-01-05,US,,free text note number 94 about thing 3
+67446,unknown,21,RED,2023-03-15 10:30,US,,free text note number 95 about thing 4
+32604,103.3,?,RED,2023/04/20,US,,free text note number 96 about thing 5
+83379,122.75,?,red ,2023-01-05,US,,free text note number 97 about thing 6
+50479,110.36,69,blue,05/02/2023,US,,free text note number 98 about thing 0
+07405,99.25,67,Red,2023/04/20,US,,free text note number 99 about thing 1
+83317,98.19,?,red ,05/02/2023,US,,free text note number 100 about thing 2
+34044,97.58,63,RED,05/02/2023,US,,free text note number 101 about thing 3
+88814,121.53,2,red ,05/02/2023,US,,free text note number 102 about thing 4
+19886,115.66,19,Red,2023/04/20,US,,free text note number 103 about thing 5
+07302,107.32,99,Green,2023-03-15 10:30,US,,free text note number 104 about thing 6
+45839,115.98,?,Blue,2023-03-15 10:30,US,,free text note number 105 about thing 0
+16379,89.11,46,RED,05/02/2023,US,,free text note number 106 about thing 1
+60450,110.22,38,blue,2023-01-05,US,,free text note number 107 about thing 2
+08125,71.75,89,Red,2023-03-15 10:30,US,,free text note number 108 about thing 3
+40579,126.95,13,blue,2023-01-05,US,,free text note number 109 about thing 4
+00450,101.8,?,Green,2023-03-15 10:30,US,,free text note number 110 about thing 5
+78596,103.67,71,red ,05/02/2023,US,,free text note number 111 about thing 6
+39810,111.99,?,blue,2023-03-15 10:30,US,,free text note number 112 about thing 0
+01143,99.81,61,Green,2023/04/20,US,,free text note number 113 about thing 1
+05248,94.92,55,red ,2023-03-15 10:30,US,,free text note number 114 about thing 2
+16231,123.8,67,blue,2023-01-05,US,,free text note number 115 about thing 3
+36199,102.32,?,Red,2023/04/20,US,,free text note number 116 about thing 4
+13686,81.68,75,Blue,2023/04/20,US,,free text note number 117 about thing 5
+18796,108.79,93,red ,2023/04/20,US,,free text note number 118 about thing 6
+09058,65.9,?,blue,2023-01-05,US,,free text note number 119 about thing 0
+58810,133.11,31,red ,2023/04/20,US,,free text note number 120 about thing 1
+60381,96.58,3,Green,05/02/2023,US,,free text note number 121 about thing 2
+75847,100.92,23,Red,2023-01-05,US,,free text note number 122 about thing 3
+68549,145.16,?,RED,2023-01-05,US,,free text note number 123 about thing 4
+51719,143.03,63,RED,2023/04/20,US,,free text note number 124 about thing 5
+36011,102.32,41,blue,2023-01-05,US,,free text note number 125 about thing 6
+02386,112.5,16,red ,2023-01-05,US,,free text note number 126 about thing 0
+70554,121.8,96,RED,2023-03-15 10:30,US,,free text note number 127 about thing 1
+00763,133.64,91,Blue,2023-01-05,US,,free text note number 128 about thing 2
+36105,unknown,68,RED,2023-03-15 10:30,US,,free text note number 129 about thing 3
+38940,102.71,?,Green,2023/04/20,US,,free text note number 130 about thing 4
+58710,124.49,?,Green,2023-01-05,US,,free text note number 131 about thing 5
+04794,105.39,0,Green,05/02/2023,US,,free text note number 132 about thing 6
+04018,115.09,?,Red,2023/04/20,US,,free text note number 133 about thing 0
+45014,112.2,62,red ,05/02/2023,US,,free text note number 134 about thing 1
+34422,77.3,99,Blue,2023-03-15 10:30,US,,free text note number 135 about thing 2
+38663,82.82,?,red ,2023-03-15 10:30,US,,free text note number 136 about thing 3
+05764,47.17,?,blue,2023-03-15 10:30,US,,free text note number 137 about thing 4
+42791,94.8,91,blue,2023-03-15 10:30,US,,free text note number 138 about thing 5
+75428,126.78,93,Blue,2023-03-15 10:30,US,,free text note number 139 about thing 6
+22154,77.82,10,blue,2023-03-15 10:30,US,,free text note number 140 about thing 0
+66366,124.68,79,RED,2023-01-05,US,,free text note number 141 about thing 1
+02260,119.99,50,RED,2023-03-15 10:30,US,,free text note number 142 about thing 2
+85619,98.9,?,blue,2023/04/20,US,,free text note number 143 about thing 3
+80779,99.85,60,blue,05/02/2023,US,,free text note number 144 about thing 4
+87910,101.66,?,red ,2023/04/20,US,,free text note number 145 about thing 5
+76509,82.78,?,Blue,2023-03-15 10:30,US,,free text note number 146 about thing 6
+54820,94.35,?,Blue,2023-01-05,US,,free text note number 147 about thing 0
+42744,99.07,6,blue,05/02/2023,US,,free text note number 148 about thing 1
+14334,112.24,29,Blue,05/02/2023,US,,free text note number 149 about thing 2
+80031,115.84,51,Green,2023/04/20,US,,free text note number 150 about thing 3
+30177,85.15,19,red ,2023-01-05,US,,free text note number 151 about thing 4
+65936,116.51,12,RED,2023/04/20,US,,free text note number 152 about thing 5
+63842,84.44,51,red ,05/02/2023,US,,free text note number 153 about thing 6
+02381,96.62,?,Green,2023-03-15 10:30,US,,free text note number 154 about thing 0
+68653,107.39,97,Green,05/02/2023,US,,free text note number 155 about thing 1
+02010,99.55,?,red ,2023-01-05,US,,free text note number 156 about thing 2
+70419,97.46,?,Red,2023/04/20,US,,free text note number 157 about thing 3
+36830,105.39,?,RED,2023-03-15 10:30,US,,free text note number 158 about thing 4
+10071,88.94,?,Green,2023-03-15 10:30,US,,free text note number 159 about thing 5
+24913,86.95,?,Green,2023-01-05,US,,free text note number 160 about thing 6
+12473,95.92,78,RED,2023/04/20,US,,free text note number 161 about thing 0
+85906,119.23,1,RED,2023/04/20,US,,free text note number 162 about thing 1
+72440,97.97,5,Green,2023/04/20,US,,free text note number 163 about thing 2
+92125,138.09,86,RED,05/02/2023,US,,free text note number 164 about thing 3
+08264,104.29,?,blue,2023-01-05,US,,free text note number 165 about thing 4
+14733,40.51,85,Green,05/02/2023,US,,free text note number 166 about thing 5
+51000,91.21,?,Blue,2023/04/20,US,,free text note number 167 about thing 6
+00594,133.3,?,Blue,2023-01-05,US,,free text note number 168 about thing 0
+43799,100.13,41,Green,2023-03-15 10:30,US,,free text note number 169 about thing 1
+53422,91.24,79,blue,2023/04/20,US,,free text note number 170 about thing 2
+81998,82.53,7,Red,2023-01-05,US,,free text note number 171 about thing 3
+94363,126.48,27,Red,2023-03-15 10:30,US,,free text note number 172 about thing 4
+08864,120.06,72,Blue,2023-03-15 10:30,US,,free text note number 173 about thing 5
+03709,113.44,58,Red,2023-01-05,US,,free text note number 174 about thing 6
+74066,108.56,89,blue,2023-03-15 10:30,US,,free text note number 175 about thing 0
+28199,128.82,73,blue,2023-01-05,US,,free text note number 176 about thing 1
+33462,116.42,87,blue,2023-01-05,US,,free text note number 177 about thing 2
+22616,75.4,24,RED,2023-01-05,US,,free text note number 178 about thing 3
+68058,115.37,81,red ,2023/04/20,US,,free text note number 179 about thing 4
+77828,103.39,73,Green,05/02/2023,US,,free text note number 180 about thing 5
+16285,97.79,?,Red,2023/04/20,US,,free text note number 181 about thing 6
+56537,115.27,79,red ,05/02/2023,US,,free text note number 182 about thing 0
+61961,100.57,12,Green,2023/04/20,US,,free text note number 183 about thing 1
+84741,41.33,?,blue,05/02/2023,US,,free text note number 184 about thing 2
+75081,131.15,70,Green,2023-01-05,US,,free text note number 185 about thing 3
+69585,120.75,64,Green,2023-01-05,US,,free text note number 186 about thing 4
+69200,97.55,18,red ,05/02/2023,US,,free text note number 187 about thing 5
+91250,92.55,2,red ,2023-03-15 10:30,US,,free text note number 188 about thing 6
+76830,104.53,4,Green,2023-01-05,US,,free text note number 189 about thing 0
+20589,74.31,37,RED,2023/04/20,US,,free text note number 190 about thing 1
+61306,106.13,93,Red,2023-01-05,US,,free text note number 191 about thing 2
+84585,95.4,32,blue,2023-03-15 10:30,US,,free text note number 192 about thing 3
+51693,92.94,55,red ,2023-03-15 10:30,US,,free text note number 193 about thing 4
+18091,81.54,?,Blue,2023/04/20,US,,free text note number 194 about thing 5
+67035,86.43,?,Green,05/02/2023,US,,free text note number 195 about thing 6
+53674,122.13,?,RED,2023-01-05,US,,free text note number 196 about thing 0
+12029,126.7,?,Red,2023-03-15 10:30,US,,free text note number 197 about thing 1
+20105,110.06,?,Green,2023-03-15 10:30,US,,free text note number 198 about thing 2
+66724,99.09,?,Blue,2023/04/20,US,,free text note number 199 about thing 3
+07907,82.44,5,Red,05/02/2023,US,,free text note number 200 about thing 4
+14824,114.36,83,blue,05/02/2023,US,,free text note number 201 about thing 5
+23537,132.22,?,RED,2023-03-15 10:30,US,,free text note number 202 about thing 6
+46877,67.71,96,blue,2023/04/20,US,,free text note number 203 about thing 0
+78477,123.49,?,Green,2023-01-05,US,,free text note number 204 about thing 1
+46376,56.69,39,Green,2023/04/20,US,,free text note number 205 about thing 2
+64394,93.2,65,Red,2023-03-15 10:30,US,,free text note number 206 about thing 3
+11509,107.69,27,Red,2023/04/20,US,,free text note number 207 about thing 4
+91781,72.7,97,Green,2023/04/20,US,,free text note number 208 about thing 5
+21718,69.66,94,blue,2023-01-05,US,,free text note number 209 about thing 6
+23153,103.71,14,Blue,2023-03-15 10:30,US,,free text note number 210 about thing 0
+72423,117.53,34,blue,05/02/2023,US,,free text note number 211 about thing 1
+65973,90.49,38,Green,2023-03-15 10:30,US,,free text note number 212 about thing 2
+63838,126.88,34,Blue,2023/04/20,US,,free text note number 213 about thing 3
+88432,84.4,34,Green,05/02/2023,US,,free text note number 214 about thing 4
+48354,135.09,61,red ,2023/04/20,US,,free text note number 215 about thing 5
+88471,102.41,70,Red,2023-01-05,US,,free text note number 216 about thing 6
+68295,104.71,87,Green,2023-01-05,US,,free text note number 217 about thing 0
+67310,112.3,81,blue,2023/04/20,US,,free text note number 218 about thing 1
+38975,106.42,17,RED,2023/04/20,US,,free text note number 219 about thing 2
+05981,136.92,?,Red,2023/04/20,US,,free text note number 220 about thing 3
+47619,144.13,27,blue,2023/04/20,US,,free text note number 221 about thing 4
+70319,110.92,20,blue,2023/04/20,US,,free text note number 222 about thing 5
+42145,96.69,23,RED,2023/04/20,US,,free text note number 223 about thing 6
+77936,76.48,37,red ,2023/04/20,US,,free text note number 224 about thing 0
+75599,84.91,36,RED,2023-01-05,US,,free text note number 225 about thing 1
+23718,100.18,?,RED,2023-01-05,US,,free text note number 226 about thing 2
+06536,97.97,6,Green,2023-03-15 10:30,US,,free text note number 227 about thing 3
+31980,99.13,76,Red,05/02/2023,US,,free text note number 228 about thing 4
+81348,100.1,0,red ,2023-01-05,US,,free text note number 229 about thing 5
+12414,109.91,62,Green,05/02/2023,US,,free text note number 230 about thing 6
+01062,72.99,15,Green,2023-03-15 10:30,US,,free text note number 231 about thing 0
+48684,79.49,?,Blue,05/02/2023,US,,free text note number 232 about thing 1
+32460,122.44,92,Red,2023-03-15 10:30,US,,free text note number 233 about thing 2
+92459,116.77,39,Blue,2023/04/20,US,,free text note number 234 about thing 3
+97260,89.28,61,Green,2023/04/20,US,,free text note number 235 about thing 4
+03014,125.91,?,Red,05/02/2023,US,,free text note number 236 about thing 5
+22577,86.47,5,Blue,05/02/2023,US,,free text note number 237 about thing 6
+60873,94.96,?,blue,2023-03-15 10:30,US,,free text note number 238 about thing 0
+36045,63.49,16,RED,05/02/2023,US,,free text note number 239 about thing 1
+27922,116.94,?,RED,2023-01-05,US,,free text note number 240 about thing 2
+16713,99.82,77,blue,05/02/2023,US,,free text note number 241 about thing 3
+46683,121.4,?,red ,2023-03-15 10:30,US,,free text note number 242 about thing 4
+84142,114.19,?,blue,2023-01-05,US,,free text note number 243 about thing 5
+42241,101.99,81,Red,2023-03-15 10:30,US,,free text note number 244 about thing 6
+17725,103.32,73,Green,05/02/2023,US,,free text note number 245 about thing 0
+60919,124.04,62,Red,05/02/2023,US,,free text note number 246 about thing 1
+39221,96.9,36,blue,2023-03-15 10:30,US,,free text note number 247 about thing 2
+07357,97.15,?,RED,05/02/2023,US,,free text note number 248 about thing 3
+34441,101.6,31,blue,2023-03-15 10:30,US,,free text note number 249 about thing 4
+47929,116.37,31,Green,05/02/2023,US,,free text note number 250 about thing 5
+21243,118.76,?,RED,2023-01-05,US,,free text note number 251 about thing 6
+08082,138.69,92,Green,05/02/2023,US,,free text note number 252 about thing 0
+55481,98.82,64,blue,2023-01-05,US,,free text note number 253 about thing 1
+39083,125.77,45,Red,2023-03-15 10:30,US,,free text note number 254 about thing 2
+36037,87.48,?,blue,2023/04/20,US,,free text note number 255 about thing 3
+60337,112.7,?,RED,2023-03-15 10:30,US,,free text note number 256 about thing 4
+94177,103.19,81,Blue,2023-03-15 10:30,US,,free text note number 257 about thing 5
+92258,135.44,?,blue,2023-01-05,US,,free text note number 258 about thing 6
+45812,112.97,80,red ,2023-01-05,US,,free text note number 259 about thing 0
+35926,91.85,58,red ,2023/04/20,US,,free text note number 260 about thing 1
+71718,112.41,73,Green,2023-03-15 10:30,US,,free text note number 261 about thing 2
+56634,107.8,86,blue,05/02/2023,US,,free text note number 262 about thing 3
+02743,94.55,79,RED,2023-01-05,US,,free text note number 263 about thing 4
+05899,95.02,45,Red,2023/04/20,US,,free text note number 264 about thing 5
+83807,82.05,?,blue,2023-03-15 10:30,US,,free text note number 265 about thing 6
+29773,156.09,24,red ,2023/04/20,US,,free text note number 266 about thing 0
+59263,103.66,17,Red,2023/04/20,US,,free text note number 267 about thing 1
+44066,120.45,79,RED,2023-03-15 10:30,US,,free text note number 268 about thing 2
+29964,77.66,22,red ,05/02/2023,US,,free text note number 269 about thing 3
+21425,79.26,?,blue,2023/04/20,US,,free text note number 270 about thing 4
+55214,97.92,43,red ,2023/04/20,US,,free text note number 271 about thing 5
+02660,98.01,26,RED,05/02/2023,US,,free text note number 272 about thing 6
+01202,117.04,?,blue,2023-01-05,US,,free text note number 273 about thing 0
+70689,80.93,?,blue,2023/04/20,US,,free text note number 274 about thing 1
+15435,111.8,77,RED,2023-01-05,US,,free text note number 275 about thing 2
+50163,131.31,?,Red,05/02/2023,US,,free text note number 276 about thing 3
+70937,82.73,?,blue,05/02/2023,US,,free text note number 277 about thing 4
+29293,119.21,?,Blue,2023-03-15 10:30,US,,free text note number 278 about thing 5
+46691,81.8,81,RED,05/02/2023,US,,free text note number 279 about thing 6
+30352,107.94,?,RED,2023-01-05,US,,free text note number 280 about thing 0
+89746,108.28,98,RED,05/02/2023,US,,free text note number 281 about thing 1
+23619,135.77,64,red ,2023-01-05,US,,free text note number 282 about thing 2
+71047,87.2,92,RED,2023/04/20,US,,free text note number 283 about thing 3
+51182,104.38,45,RED,05/02/2023,US,,free text note number 284 about thing 4
+93888,121.89,59,red ,05/02/2023,US,,free text note number 285 about thing 5
+69269,77.58,67,red ,2023-03-15 10:30,US,,free text note number 286 about thing 6
+85198,100.83,45,Blue,2023-01-05,US,,free text note number 287 about thing 0
+53336,83.61,90,Red,2023-01-05,US,,free text note number 288 about thing 1
+12022,86.97,65,Blue,2023/04/20,US,,free text note number 289 about thing 2
+15918,114.65,?,Red,2023-01-05,US,,free text note number 290 about thing 3
+84608,115.02,8,Green,2023-03-15 10:30,US,,free text note number 291 about thing 4
+96813,152.56,?,red ,05/02/2023,US,,free text note number 292 about thing 5
+69520,128.55,?,RED,2023-03-15 10:30,US,,free text note number 293 about thing 6
+67034,126.79,?,red ,2023/04/20,US,,free text note number 294 about thing 0
+18381,97.66,64,Red,05/02/2023,US,,free text note number 295 about thing 1
+96035,94.98,36,Blue,2023/04/20,US,,free text note number 296 about thing 2
+14251,103.72,75,Green,2023-03-15 10:30,US,,free text note number 297 about thing 3
+83562,55.46,?,Red,05/02/2023,US,,free text note number 298 about thing 4
+30564,unknown,74,Green,2023/04/20,US,,free text note number 299 about thing 5
+01234,86.96,77,red ,2023-01-05,US,,free text note number 0 about thing 0
+00501,96.51,31,blue,2023-03-15 10:30,US,,free text note number 1 about thing 1
+02108,133.27,?,red ,05/02/2023,US,,free text note number 2 about thing 2
+07001,113.18,?,RED,2023-01-05,US,,free text note number 3 about thing 3
+00100,67.17,0,RED,05/02/2023,US,,free text note number 4 about thing 4
+24800,99.9,7,Blue,2023-03-15 10:30,US,,free text note number 5 about thing 5
+29966,87.53,?,red ,2023-01-05,US,,free text note number 6 about thing 6
+16532,102.97,24,Blue,2023-01-05,US,,free text note number 7 about thing 0
+25533,67.84,14,Red,2023-03-15 10:30,US,,free text note number 8 about thing 1
+01460,104.84,86,Blue,05/02/2023,US,,free text note number 9 about thing 2
